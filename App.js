@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from "react";
+import BottomTabNavigation from "./components/BottomTabNavigation";
+import HomeScreen from "./src/HomeScreen";
+import ManagementScreen from "./src/ManagementScreen";
+import ListScreen from "./src/ListScreen";
+import CalendarScreen from "./src/CalendarScreen";
+import FAB from "./components/FloatingActionButton";
 
-export default function App() {
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <BottomTabNavigation
+        HomeScreen={HomeScreen}
+        ManagementScreen={ManagementScreen}
+        CalendarScreen={CalendarScreen}
+        ListScreen={ListScreen}
+      />
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
