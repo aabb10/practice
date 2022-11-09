@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\hayu1\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @react-navigation
+  C:\Program Files\nodejs\node.exe C:\Users\hayu1\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @antd-design/react-native
 
 PATH: 
-  C:\Program Files\Eclipse Adoptium\jdk-11.0.16.101-hotspot\bin;C:\Python310\Scripts\;C:\Python310\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Users\hayu1\AppData\Local\Android\Sdk\platform-tools;C:\Users\hayu1\AppData\Local\Microsoft\WindowsApps;C:\Users\hayu1\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\hayu1\AppData\Local\Microsoft\WindowsApps;C:\Users\hayu1\AppData\Roaming\npm;C:\Users\hayu1\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\hayu1\AppData\Local\gitkraken\bin;;C:\Users\hayu1\Desktop\mobile\node_modules\.bin
+  C:\Program Files\Eclipse Adoptium\jdk-11.0.16.101-hotspot\bin;C:\Python310\Scripts\;C:\Python310\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Ruby31-x64\bin;C:\Users\hayu1\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\hayu1\AppData\Local\Programs\Python\Python311\;C:\Users\hayu1\AppData\Local\Android\Sdk\platform-tools;C:\Users\hayu1\AppData\Local\Microsoft\WindowsApps;C:\Users\hayu1\AppData\Local\JetBrains\Toolbox\scripts;C:\Users\hayu1\AppData\Local\Microsoft\WindowsApps;C:\Users\hayu1\AppData\Roaming\npm;C:\Users\hayu1\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\hayu1\AppData\Local\gitkraken\bin;C:\Users\hayu1\Desktop\mobile\node_modules\.bin
 
 Yarn version: 
   1.22.19
@@ -14,8 +14,8 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@react-navigation: Request "https://registry.yarnpkg.com/@react-navigation" returned a 405
-      at Request.params.callback [as _callback] (C:\Users\hayu1\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66154:18)
+  Error: https://registry.yarnpkg.com/@antd-design%2freact-native: Not found
+      at Request.params.callback [as _callback] (C:\Users\hayu1\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66145:18)
       at Request.self.callback (C:\Users\hayu1\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
       at Request.emit (node:events:513:28)
       at Request.<anonymous> (C:\Users\hayu1\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141862:10)
@@ -38,14 +38,19 @@ npm manifest:
       "web": "expo start --web"
     },
     "dependencies": {
+      "@expo/vector-icons": "^13.0.0",
       "@react-navigation/bottom-tabs": "^6.4.0",
-      "@react-navigation/material-bottom-tabs": "^6.2.4",
+      "@react-navigation/drawer": "^6.5.0",
       "@react-navigation/native": "^6.0.13",
       "expo": "~46.0.16",
       "expo-status-bar": "~1.4.0",
+      "firebase": "^9.13.0",
       "react": "18.0.0",
       "react-native": "0.69.6",
       "react-native-paper": "^4.12.5",
+      "react-native-safe-area-context": "4.3.1",
+      "react-native-screens": "~3.15.0",
+      "react-native-swiper": "^1.6.0",
       "react-native-vector-icons": "^9.2.0"
     },
     "devDependencies": {

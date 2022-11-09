@@ -1,10 +1,9 @@
 import * as React from "react";
-import BottomTabNavigation from "./components/BottomTabNavigation";
-import HomeScreen from "./src/HomeScreen";
-import ManagementScreen from "./src/ManagementScreen";
-import ListScreen from "./src/ListScreen";
-import CalendarScreen from "./src/CalendarScreen";
-import FAB from "./components/FloatingActionButton";
+import BottomTabNavigation from "./src/components/BottomTabNavigation";
+import HomeScreen from "./src/screens/HomeScreen";
+import ManagementScreen from "./src/screens/ManagementScreen";
+import ListScreen from "./src/screens/ListScreen";
+import CalendarScreen from "./src/screens/CalendarScreen";
 
 function App() {
   return (
