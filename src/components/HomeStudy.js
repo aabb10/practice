@@ -1,15 +1,15 @@
 import { Image, Text, View, StyleSheet, Pressable } from "react-native";
 import { Divider } from "react-native-paper";
 
-const HomeStudy = ({ name, location, person }) => {
+const HomeStudy = ({ name, location, person, onPress }) => {
   return (
     <>
       <Pressable
-        onPress={() => {
-          console.log("Press");
-        }}
+        onPress={onPress}
+        android_ripple={{ color: "white" }}
+        style={({ pressed }) => [pressed ? styles.buttonPressed : null]}
       >
-        <Divider style={styles.divider} />
+        <Divider />
         <View style={styles.container}>
           <Image style={styles.image} source={require("../../assets/a.png")} />
           <View style={[{ flex: 1 }, styles.rightContainer]}>
@@ -46,6 +46,8 @@ const styles = StyleSheet.create({
     paddingRight: 30,
     paddingLeft: 30,
     flexDirection: "row",
+    marginTop: 10,
+    marginBottom: 10,
   },
   divider: { marginTop: 20, marginBottom: 20 },
   rightContainer: {
@@ -67,6 +69,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: 90,
     height: 90,
+  },
+  buttonPressed: {
+    opacity: 0.5,
   },
 });
 

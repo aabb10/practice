@@ -4,18 +4,10 @@ import HomeScreen from "./src/screens/HomeScreen";
 import ManagementScreen from "./src/screens/ManagementScreen";
 import ListScreen from "./src/screens/ListScreen";
 import CalendarScreen from "./src/screens/CalendarScreen";
+import StackNavigation from "./src/components/StackNavigation";
 
 function App() {
-  return (
-    <>
-      <BottomTabNavigation
-        HomeScreen={HomeScreen}
-        ManagementScreen={ManagementScreen}
-        CalendarScreen={CalendarScreen}
-        ListScreen={ListScreen}
-      />
-    </>
-  );
+  return <StackNavigation />;
 }
 
 export default App;

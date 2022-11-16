@@ -7,7 +7,7 @@ import HomeStudy from "../components/HomeStudy";
 import { db } from "../../firebaseConfig";
 import { useCallback, useEffect, useState } from "react";
 
-function HomeScreen() {
+function HomeScreen({ navigation }) {
   const [studyList, setStudyList] = useState([]);
   useEffect(() => {
     const study = db.collection("study");
@@ -18,12 +18,21 @@ function HomeScreen() {
     });
   }, []);
 
+  const pressStudyCard = () => {
+    navigation.navigate("Notice");
+  };
+
+  const pressSearch = () => {
+    navigation.navigate("Search");
+  };
+
   const renderItem = useCallback(
     ({ item }) => (
       <HomeStudy
         name={item.name}
         location={item.location}
         person={item.person}
+        onPress={pressStudyCard}
       />
     ),
     []
@@ -33,7 +42,7 @@ function HomeScreen() {
 
   return (
     <>
-      <TopBar />
+      <TopBar onPress={pressSearch} />
       <View style={styles.container}>
         <View style={styles.swiper}>
           <HomeSwiper />
