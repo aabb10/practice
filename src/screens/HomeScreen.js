@@ -1,28 +1,29 @@
 import * as React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import FloatingActionButton from "../components/FloatingActionButton";
-import TopBar from "../components/TopBar";
 import HomeSwiper from "../components/HomeSwiper";
 import HomeStudy from "../components/HomeStudy";
 import { db } from "../../firebaseConfig";
 import { useCallback, useEffect, useState } from "react";
+import { query, collection, getDocs } from "firebase/firestore";
 
 function HomeScreen({ navigation }) {
   const [studyList, setStudyList] = useState([]);
+
   useEffect(() => {
-    const study = db.collection("study");
-    study.get().then((index) => {
-      index.forEach((doc) => {
+    const study = query(collection(db, "study"));
+    getDocs(study).then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
         setStudyList((prevState) => [...prevState, doc.data()]);
       });
     });
   }, []);
 
-  const pressStudyCard = () => {
-    navigation.navigate("Notice");
+  const pressFAB = () => {
+    navigation.navigate("Login");
   };
 
-  const pressSearch = () => {
+  const pressStudyCard = () => {
     navigation.navigate("Search");
   };
 
@@ -42,7 +43,6 @@ function HomeScreen({ navigation }) {
 
   return (
     <>
-      <TopBar onPress={pressSearch} />
       <View style={styles.container}>
         <View style={styles.swiper}>
           <HomeSwiper />
@@ -54,7 +54,7 @@ function HomeScreen({ navigation }) {
             keyExtractor={keyExtractor}
           />
         </View>
-        <FloatingActionButton />
+        <FloatingActionButton onPress={pressFAB} />
       </View>
     </>
   );

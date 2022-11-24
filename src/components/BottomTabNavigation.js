@@ -4,23 +4,27 @@ options 설명 : https://reactnavigation.org/docs/bottom-tab-navigator
 */
 
 import * as React from "react";
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import HomeScreen from "../screens/HomeScreen";
 import ManagementScreen from "../screens/ManagementScreen";
 import CalendarScreen from "../screens/CalendarScreen";
 import ListScreen from "../screens/ListScreen";
+import TopBarIcon from "./TopBarIcon";
 
 const Tab = createBottomTabNavigator();
 
-const BottomTabNavigation = () => {
+const BottomTabNavigation = ({ navigation }) => {
+  const pressSearch = () => {
+    navigation.navigate("Search");
+  };
   return (
     <Tab.Navigator
       screenOptions={{
         tabBarActiveTintColor: "black",
         tabBarShowLabel: false,
-        headerShown: false,
+        headerTitleAlign: "center",
+        headerRight: () => <TopBarIcon onPress={pressSearch} />,
       }}
     >
       <Tab.Screen
