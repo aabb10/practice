@@ -12,6 +12,7 @@ import BottomTabNavigation from "./BottomTabNavigation";
 import { createStackNavigator } from "@react-navigation/stack";
 import SearchScreen from "../screens/SearchScreen";
 import LoginScreen from "../screens/LoginScreen";
+import JoinStudyScreen from "../screens/JoinStudyScreen";
 
 const Stack = createStackNavigator();
 
@@ -25,11 +26,8 @@ const StackNavigation = () => {
           component={BottomTabNavigation}
         />
         <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen
-          options={{ headerShown: false }}
-          name="Search"
-          component={SearchScreen}
-        />
+        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen name="JoinStudy" component={JoinStudyScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
