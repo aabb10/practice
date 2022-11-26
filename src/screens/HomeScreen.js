@@ -1,10 +1,13 @@
-import * as React from "react";
+/*
+홈화면
+ */
 import { FlatList, StyleSheet, View } from "react-native";
+import * as React from "react";
 import FloatingActionButton from "../components/FloatingActionButton";
 import HomeSwiper from "../components/HomeSwiper";
-import HomeStudy from "../components/HomeStudy";
-import { db } from "../../firebaseConfig";
+import StudyCard from "../components/StudyCard";
 import { useCallback, useEffect, useState } from "react";
+import { db } from "../../firebaseConfig";
 import { query, collection, getDocs } from "firebase/firestore";
 
 function HomeScreen({ navigation }) {
@@ -12,51 +15,58 @@ function HomeScreen({ navigation }) {
 
   useEffect(() => {
     const study = query(collection(db, "study"));
-    getDocs(study).then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        setStudyList((prevState) => [...prevState, doc.data()]);
+    getDocs(study)
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          setStudyList((prevState) => [...prevState, doc.data()]);
+          console.log(doc.data());
+        });
+      })
+      .catch((e) => {
+        console.log(`Error : ${e}`);
       });
-    });
   }, []);
 
-  const pressFAB = () => {
-    navigation.navigate("Login");
-  };
-
-  const pressStudyCard = () => {
-    navigation.navigate("Search");
-  };
-
-  const renderItem = useCallback(
-    ({ item }) => (
-      <HomeStudy
+  const renderItem = useCallback(({ item }) => {
+    const pressStudyCard = () => {
+      navigation.navigate("JoinStudy", {
+        studyName: item.name,
+        location: item.location,
+        members: item.members,
+        category: item.category,
+      });
+    };
+    return (
+      <StudyCard
         name={item.name}
         location={item.location}
-        person={item.person}
+        person={item.members}
         onPress={pressStudyCard}
       />
-    ),
-    []
-  );
+    );
+  }, []);
 
-  const keyExtractor = useCallback((item) => item.key, []);
+  const keyExtractor = useCallback((item) => item.id, []);
+  console.log(keyExtractor);
+
+  const pressFAB = () => {
+    navigation.navigate("CreateStudy");
+  };
 
   return (
-    <>
-      <View style={styles.container}>
-        <View style={styles.swiper}>
-          <HomeSwiper />
-        </View>
-        <View style={styles.list}>
-          <FlatList
-            data={studyList}
-            renderItem={renderItem}
-            keyExtractor={keyExtractor}
-          />
-        </View>
-        <FloatingActionButton onPress={pressFAB} />
+    <View style={styles.container}>
+      <View style={styles.swiper}>
+        <HomeSwiper />
       </View>
-    </>
+      <View style={styles.list}>
+        <FlatList
+          data={studyList}
+          renderItem={renderItem}
+          keyExtractor={keyExtractor}
+        />
+      </View>
+      <FloatingActionButton onPress={pressFAB} />
+    </View>
   );
 }
 

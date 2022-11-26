@@ -1,28 +1,41 @@
 import { Image, Text, View, StyleSheet, Pressable } from "react-native";
 import { Divider } from "react-native-paper";
 
-const SearchCard = ({ name, onPress }) => {
+const SearchCard = ({ name, location, person, onPress }) => {
   return (
-    <>
-      <Pressable
-        onPress={onPress}
-        android_ripple={{ color: "white" }}
-        style={({ pressed }) => [pressed ? styles.buttonPressed : null]}
-      >
-        <Divider />
-        <View style={styles.container}>
-          <View style={[{ flex: 1 }, styles.rightContainer]}>
-            <Text
-              style={[styles.name, { color: "black" }]}
-              ellipsizeMode="tail"
-              numberOfLines={1}
-            >
-              {name}
-            </Text>
-          </View>
+    <Pressable
+      onPress={onPress}
+      android_ripple={{ color: "white" }}
+      style={({ pressed }) => [pressed ? styles.buttonPressed : null]}
+    >
+      <Divider />
+      <View style={styles.container}>
+        <Image style={styles.image} source={require("../../assets/grey.png")} />
+        <View style={[{ flex: 1 }, styles.rightContainer]}>
+          <Text
+            style={[styles.name, { color: "black" }]}
+            ellipsizeMode="tail"
+            numberOfLines={1}
+          >
+            {name}
+          </Text>
+          <Text
+            style={[styles.location, { color: "black" }]}
+            ellipsizeMode="tail"
+            numberOfLines={1}
+          >
+            {location}
+          </Text>
+          <Text
+            style={[styles.person, { color: "black" }]}
+            ellipsizeMode="tail"
+            numberOfLines={1}
+          >
+            {person}
+          </Text>
         </View>
-      </Pressable>
-    </>
+      </View>
+    </Pressable>
   );
 };
 
